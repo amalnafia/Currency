@@ -19,14 +19,14 @@ interface CurrencyService {
         @Query("amount") amount: Double
     ): Conversion
 
-    @GET("timeseries")
+    @POST("timeseries")
     suspend fun getConversionHistory(
         @Query("access_key") apiKey: String,
         @Query("start_date") stareDate: String,
         @Query("end_date") endDate: String,
     ): ConversionHistory
 
-    @GET("latest")
+    @POST("latest")
     suspend fun getLatest(
         @Query("access_key") apiKey: String,
         @Query("base") base: String,
