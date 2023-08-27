@@ -152,7 +152,7 @@ fun ConvertCurrencyBody(
 
             OutlinedTextField(
                 value = viewModel.convertedAmount,
-                onValueChange = {},
+                onValueChange = { viewModel.convertedAmount = it },
                 label = { Text("Converted Amount") },
                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Decimal),
                 modifier = Modifier.weight(1f)
