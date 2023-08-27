@@ -1,4 +1,4 @@
-package com.project.currency.ui.screens.conversionHistory
+package com.project.currency.ui.screens.details
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -10,11 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavBackStackEntry
-import com.project.currency.core.entities.ConversionHistory
-import com.project.currency.core.entities.ExchangeRates
-import com.project.currency.core.entities.RateEntry
-import com.project.currency.ui.screens.conversionHistory.views.HistoricalList
-import com.project.currency.ui.screens.conversionHistory.views.OtherCurrencies
+import com.project.currency.ui.screens.details.views.HistoricalList
+import com.project.currency.ui.screens.details.views.OtherCurrencies
 import com.project.currency.util.NavigationKeys.Arg.BASE_CURRENCY
 
 @Composable

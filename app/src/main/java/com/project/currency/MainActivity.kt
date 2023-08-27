@@ -13,7 +13,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.project.currency.ui.screens.conversionHistory.ConversionHistoryScreen
+import com.project.currency.ui.screens.details.ConversionHistoryScreen
 import com.project.currency.ui.screens.convertCurrency.ConvertCurrencyScreen
 import com.project.currency.ui.theme.CurrencyTheme
 import com.project.currency.util.NavigationKeys.Arg.BASE_CURRENCY
