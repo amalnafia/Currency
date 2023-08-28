@@ -25,4 +25,5 @@ interface CurrencyRepository {
     suspend fun getLatest(
         base: String,
     ): Flow<Resource<ExchangeRates>>
+    suspend fun getLatest(): Flow<Resource<ExchangeRates>>
 }

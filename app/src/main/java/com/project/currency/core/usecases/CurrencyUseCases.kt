@@ -37,3 +37,7 @@ suspend fun CurrencyUseCases.getLatest(
 ) = currencyRepository.getLatest(
     base = base
 ).flowOn(Dispatchers.IO)
+
+suspend fun CurrencyUseCases.getLatest(
+    currencyRepository: CurrencyRepository
+) = currencyRepository.getLatest().flowOn(Dispatchers.IO)

@@ -127,6 +127,18 @@ fun ConvertCurrencyBody(
                 onValueChange = { viewModel.toCurrency = it },
                 onItemClicked = { clickedItem ->
                     viewModel.toCurrency = clickedItem
+                    if (viewModel.amount.isNotEmpty()) {
+                        viewModel.latestState.data?.rates?.let { rateMap ->
+                            getExchangeRate(
+                                rateMap, viewModel.toCurrency
+                            )
+                        }
+                            ?.let { rate ->
+                                viewModel.convertEURtoCurrency(
+                                    exchangeRateEURtoCurrency = rate
+                                )
+                            }
+                    }
                 },
                 textItemComposable = { dropDownItem ->
                     Text(text = dropDownItem)
@@ -140,9 +152,25 @@ fun ConvertCurrencyBody(
             OutlinedTextField(
                 value = viewModel.amount,
                 onValueChange = {
-                    viewModel.amount = it
-                    if (viewModel.fromCurrency != "from" && viewModel.toCurrency != "to")
-                        viewModel.convert()
+                    if (it.isNotEmpty()) {
+                        viewModel.amount = it
+                        if (viewModel.fromCurrency != "from" && viewModel.toCurrency != "to") {
+                            // viewModel.convert()
+                            viewModel.latestState.data?.rates?.let { rateMap ->
+                                getExchangeRate(
+                                    rateMap, viewModel.toCurrency
+                                )
+                            }
+                                ?.let { rate ->
+                                    viewModel.convertEURtoCurrency(
+                                        exchangeRateEURtoCurrency = rate
+                                    )
+                                }
+                        } else {
+                            errorMessage.value = "Please Select from and to First"
+                            showDialog.value = true
+                        }
+                    }
                 },
                 label = { Text("Amount") },
                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Decimal),
@@ -180,4 +208,9 @@ fun ConvertCurrencyBody(
             body = errorMessage.value,
             onDismissClicked = {}
         )
+}
+
+fun getExchangeRate(rates: Map<String, Double>, toCurrency: String): Double {
+    return rates[toCurrency] ?: 0.0
+
 }

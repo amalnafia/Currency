@@ -65,6 +65,18 @@ class CurrencyRepositoryImpl(private val currencyService: CurrencyService) : Cur
             emit(Resource.error("No internet connection or server error", null))
         }
     }
+    override suspend fun getLatest() = flow {
+        try {
+            val response = currencyService.getLatest(API_KEY)
+            if (response.success) {
+                emit(Resource.success(response))
+            } else {
+                emit(Resource.error(response.error?.info ?: "Unknown error", null))
+            }
+        } catch (e: Exception) {
+            emit(Resource.error("No internet connection or server error", null))
+        }
+    }
 
     companion object {
         const val API_KEY = "ca236833a7931b06b4c10da995cb4a02"
