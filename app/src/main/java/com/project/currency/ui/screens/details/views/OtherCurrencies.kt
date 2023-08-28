@@ -1,4 +1,4 @@
-package com.project.currency.ui.screens.conversionHistory.views
+package com.project.currency.ui.screens.details.views
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth

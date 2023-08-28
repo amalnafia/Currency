@@ -1,4 +1,4 @@
-package com.project.currency.ui.screens.conversionHistory
+package com.project.currency.ui.screens.details
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
